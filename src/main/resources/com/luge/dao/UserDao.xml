@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luge.dao.UserDao">
+    <select id="findAll" resultType="com.luge.domain.User">
+        select * from user
+    </select>
+
+    <insert id="saveUser" parameterType="com.luge.domain.User">
+        insert into user (username, birthday, sex, address) values (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+    <update id="updateUser" parameterType="com.luge.domain.User">
+        update user set username = #{username},birthday = #{birthday}, sex = #{sex}, address = #{address} where id = #{id}
+    </update>
+<!--    当参数只有一个时，#{}中的内容用什么来表示都行-->
+    <delete id="deleteUser" parameterType="java.lang.Integer">
+        delete from user where id = #{id}
+    </delete>
+
+    <select id="findOne" parameterType="INT" resultType="com.luge.domain.User">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findByName" parameterType="string" resultType="com.luge.domain.User">
+        select * from USER where username like #{name}
+    </select>
+
+    <select id="findTotal" resultType="INT">
+        select count(*) from user
+    </select>
+</mapper>
