@@ -8,6 +8,9 @@
     </select>
 
     <insert id="saveUser" parameterType="com.luge.domain.User">
+        <selectKey keyProperty="id" resultType="INT" order="AFTER">
+            select last_insert_id()
+        </selectKey>
         insert into user (username, birthday, sex, address) values (#{username},#{birthday},#{sex},#{address})
     </insert>
 

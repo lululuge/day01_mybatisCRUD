@@ -49,7 +49,9 @@ public class TestMybatis {
         user.setBirthday(new Date());
         user.setSex("男");
         user.setAddress("江苏南京");
+        System.out.println("保存之前" + user);
         userDao.saveUser(user);
+        System.out.println("保存之后" + user);
     }
 
     @Test
