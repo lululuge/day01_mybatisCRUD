@@ -1,5 +1,6 @@
 package com.luge.dao;
 
+import com.luge.domain.QueryVo;
 import com.luge.domain.User;
 
 import java.util.List;
@@ -47,4 +48,11 @@ public interface UserDao {
      * @return
      */
     int findTotal();
+
+    /**
+     * 根据QueryVo进行查询
+     * @param vo
+     * @return
+     */
+    List<User> findByVo(QueryVo vo);
 }

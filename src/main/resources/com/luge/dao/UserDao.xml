@@ -33,4 +33,8 @@
     <select id="findTotal" resultType="INT">
         select count(*) from user
     </select>
+
+    <select id="findByVo" parameterType="com.luge.domain.QueryVo" resultType="com.luge.domain.User">
+        select * from user where username like #{user.username}
+    </select>
 </mapper>

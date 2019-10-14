@@ -1,6 +1,7 @@
 package com.luge.test;
 
 import com.luge.dao.UserDao;
+import com.luge.domain.QueryVo;
 import com.luge.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -85,5 +86,17 @@ public class TestMybatis {
     public void test7() throws Exception {
         int total = userDao.findTotal();
         System.out.println(total);
+    }
+
+    @Test
+    public void tset8() throws Exception {
+        User user = new User();
+        user.setUsername("%王%");
+        QueryVo vo = new QueryVo();
+        vo.setUser(user);
+        List<User> users = userDao.findByVo(vo);
+        for (User u : users) {
+            System.out.println(u);
+        }
     }
 }
